@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>(Hidden) Markovian Model for movement ecology</title>
+    <title>Movement Data Analysis : modelling, segmentation and inference</title>
     <meta charset="utf-8" />
     <meta name="author" content="Marie-Pierre Etienne" />
     <meta name="date" content="2023-01-01" />
@@ -14,12 +14,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# (Hidden) Markovian Model for movement ecology
+# Movement Data Analysis : modelling, segmentation and inference
 ### Marie-Pierre Etienne
-### Processus markoviens, semi-markoviens et leurs applications
+### Séminaire LMJL
 ### 2023
 
 ---
+
+
+
 
 # Join work with
 
@@ -89,8 +92,6 @@ name: intro
 
 
 # Movement ecology paradigm
-&lt;img class="logopos_right" src="compute.png" style="height:6%"&gt;
-&lt;img class="logopos_left" src="paw.png" style="height:7%"&gt;
 
 ##  &lt;a name=cite-nathan2008movement&gt;&lt;/a&gt;([Nathan, Getz, Revilla, et al., 2008](#bib-nathan2008movement)) presents individual movement as the results of
 
@@ -183,11 +184,22 @@ t_{n} &amp; (x_n, y_n) &amp; ang_n &amp; sp_n\\\\
 ---
 # Ecological questions 
 
-  
+## Identifying various movement patterns 
 
 .pull-left[
 
-## Behavioural ecology
+Rarely in a supervised context
+
+&lt;figure&gt;
+  &lt;img src="Fishing_Mada.png" alt="Fishing points in Mada" style="width:90%" class = "centerimg" /&gt;
+.legend[Peruvian booby  data courtesy of Sophie Bertrand]
+&lt;/figure&gt;
+]
+
+
+.pull-left[
+
+Mostly unsupervised
 
 &lt;figure&gt;
   &lt;img src="traj_seg_booby_black.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
@@ -196,20 +208,18 @@ t_{n} &amp; (x_n, y_n) &amp; ang_n &amp; sp_n\\\\
 ]
 
 
-
-
 ---
 # Ecological questions 
 
+## Understanding space use
 
 
 .pull-left[
 
-## Behavioural ecology  
 
 &lt;figure&gt;
-  &lt;img src="traj_seg_booby.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
-.legend[Peruvian booby  data courtesy of Sophie Bertrand]
+  &lt;img src="Dives_furseals.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
+.legend[Spatial dives repartition, from @johnson2011bayesian ]
 &lt;/figure&gt;
 ]
 
@@ -217,7 +227,7 @@ t_{n} &amp; (x_n, y_n) &amp; ang_n &amp; sp_n\\\\
 
 .pull-right[
 
-## Habitat preference 
+## and the link with environmentalcharacteristics
 
 &lt;figure&gt;
   &lt;img src="SSL_covs.png" alt="at the beginning is" style="width:100%" class = "centerimg" /&gt;
