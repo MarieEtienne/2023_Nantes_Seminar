@@ -275,6 +275,36 @@ name:signal
 
  * Change point detection approach. &lt;a name=cite-patin2019identifying&gt;&lt;/a&gt;([Patin, Etienne, Lebarbier, et al., 2019](#bib-patin2019identifying)) based on &lt;a name=cite-picard2007segmentation&gt;&lt;/a&gt;([Picard, Robin, Lebarbier, et al., 2007](#bib-picard2007segmentation))
 
+&lt;figure&gt;
+  &lt;img src="segmentation.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
+.legend[Segmentation illustration @patin2019identifying]
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  &lt;img src="seg_classification.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
+.legend[Segmentation illustration @patin2019identifying]
+&lt;/figure&gt;
+]
+
+
+---
+template:signal
+
+
+##  Heterogeneity in movement pattern interpretated as different internal states
+
+.pull-left[
+&lt;figure&gt;
+  &lt;img src="traj_seg_booby.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
+.legend[Peruvian booby  data courtesy of Sophie Bertrand]
+&lt;/figure&gt;
+]
+
+.pull-right[
+## Accounting for internal states
+
+ * Change point detection approach. ([Patin, Etienne, Lebarbier, et al., 2019](#bib-patin2019identifying)) based on ([Picard, Robin, Lebarbier, et al., 2007](#bib-picard2007segmentation))
+
  * More classically addressed with Hidden Markov Model &lt;a name=cite-morales2004extracting&gt;&lt;/a&gt;&lt;a name=cite-walker2010pioneer&gt;&lt;/a&gt;&lt;a name=cite-gurarie2009novel&gt;&lt;/a&gt;&lt;a name=cite-michelot2016movehmm&gt;&lt;/a&gt;([Morales, Haydon, Frair, et al., 2004](#bib-morales2004extracting); [Walker and Bez, 2010](#bib-walker2010pioneer); [Gurarie, Andrews, and Laidre, 2009](#bib-gurarie2009novel); [Michelot, Langrock, and Patterson, 2016](#bib-michelot2016movehmm))
 ]
 
@@ -302,8 +332,7 @@ The main suspect : the strong parametric form of the emission model in classical
 
 --
 
-A new hope: new non parametric approaches have been proposed &lt;a name=cite-lehericy2019consistent&gt;&lt;/a&gt;&lt;a name=cite-dechaumaray2022estimation&gt;&lt;/a&gt;([Lehéricy, 2019](#bib-lehericy2019consistent); [de
-Chaumaray, Kolei, and Marbac, 2022](#bib-dechaumaray2022estimation))
+A new hope: new non parametric approaches have been proposed &lt;a name=cite-lehericy2019consistent&gt;&lt;/a&gt;&lt;a name=cite-dechaumaray2022estimation&gt;&lt;/a&gt;([Lehéricy, 2019](#bib-lehericy2019consistent); [Marie, Salima, Marie-Pierre, et al., 2023](#bib-dechaumaray2022estimation))
 
 
 --
@@ -351,7 +380,7 @@ Popular models as  Brownian Motion and Ornstein Uhlenbeck have known transition 
 &lt;a name=cite-brillinger2002employing&gt;&lt;/a&gt;[Brillinger, Preisler, Ager, et al. (2002)](#bib-brillinger2002employing) propose a flexible framework
 `$$dX_s = -\nabla H_{\theta}(X_s) ds + \gamma dW_s, \quad X_0=x_0.$$`
 
-but no explicit transitions `\(q_{\theta}(x_t, x_{t+s})\)`
+but no explicit transitions `\(q_{\theta}(x_t, x_{t+s}),\)` .care[ No explicit likelihood!]
 
 --
 
@@ -360,6 +389,7 @@ In &lt;a name=cite-Gloaguen2018stochastic&gt;&lt;/a&gt;[Gloaguen, Etienne, and L
 .pull-left[
 &lt;figure&gt;
   &lt;img src="map2.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
+  .legend[One example for `\(H_{\theta}\)`]
 &lt;/figure&gt;
 ]
 
@@ -370,34 +400,26 @@ In &lt;a name=cite-Gloaguen2018stochastic&gt;&lt;/a&gt;[Gloaguen, Etienne, and L
 * &lt;a name=cite-ozaki1992bridge&gt;&lt;/a&gt;([Ozaki, 1992](#bib-ozaki1992bridge)) and &lt;a name=cite-kessler1997estimation&gt;&lt;/a&gt;[Kessler (1997)](#bib-kessler1997estimation) same results than
 * MCEM based on exact simulation &lt;a name=cite-beskos2006exact&gt;&lt;/a&gt;([Beskos, Papaspiliopoulos, Roberts, et al., 2006](#bib-beskos2006exact)) limits the flexibility of the SDE.
 ]
+--
+
+Stationarity, if meaningful the stationnary distribution is given by  
+
+`$$\pi_{\theta}(x) \varpropto e^{- \frac{2}{\gamma^2} H_{\theta}(x)}.$$` 
 
 
----
 
 
+&lt;!-- --- --&gt;
 
----
+&lt;!-- # Potential based Diffusions as continuous time movement model  --&gt;
 
-# Potential based Diffusions as continuous time movement model 
-
-## Flexible movement model for habitat preference
-
-&lt;figure&gt;
-  &lt;img src="DAG1.png" alt="at the beginning is" style="width:80%" class = "centerimg" /&gt;
-&lt;/figure&gt;
+&lt;!-- ## Flexible movement model for habitat preference --&gt;
 
 
----
-
-# Potential based Diffusions as continuous time movement model 
-
-## Flexible movement model for habitat preference
-
-
-&lt;figure&gt;
-  &lt;img src="DAG2.png" alt="at the beginning is" style="width:80%" class = "centerimg" /&gt;
-   .legend[Flexible movement model which accounts for environment]
-&lt;/figure&gt;
+&lt;!-- &lt;figure&gt; --&gt;
+&lt;!--   &lt;img src="DAG2.png" alt="at the beginning is" style="width:80%" class = "centerimg" /&gt; --&gt;
+&lt;!--    .legend[Flexible movement model which accounts for environment] --&gt;
+&lt;!-- &lt;/figure&gt; --&gt;
 
 
 &lt;!-- --- --&gt;
@@ -422,8 +444,6 @@ In &lt;a name=cite-Gloaguen2018stochastic&gt;&lt;/a&gt;[Gloaguen, Etienne, and L
 A classical choice of **resource selection function**, (i.e stationary distribution including covariates)
 $$\pi{\left(x \vert \theta\right)} \varpropto  \exp\left(\sum_{j=1}^J \theta_j c_j (x) \right). $$ 
 
-Diffusion, under regularity condition admits a stationary  distribution.  
-
 --
 
 Combining the ideas of &lt;a name=cite-michelot2019linking&gt;&lt;/a&gt;([Michelot, Blackwell, and Matthiopoulos, 2019](#bib-michelot2019linking)), and  ([Brillinger, Preisler, Ager, et al., 2002](#bib-brillinger2002employing)) lead to the Langevin diffusion as movement model, 
@@ -435,17 +455,16 @@ Using Euler approximation
 `$$	X_{i+1} \vert \lbrace X_i = x_i \rbrace = 
     	x_i + \frac{\gamma^2 \Delta_i}{2} \sum_{j=1}^J \theta_j \nabla c_j(x_i) + \sqrt{\Delta_i}  \varepsilon_{i+1},\quad 
     	\varepsilon_{i+1} \overset{ind}{\sim} N \left( {0} , \gamma^2 \boldsymbol{I}_d \right),$$`
-
-leads to a simple linear model published in &lt;a name=cite-michelot2019langevin&gt;&lt;/a&gt;[Michelot, Etienne, Blackwell, et al. (2019)](#bib-michelot2019langevin).
-    	
-    	
-    	
 ---
 
 # Potential based Diffusions as continuous time movement model 
 
 ## Flexible movement model for habitat preference
 
+`$${\Delta_i}^{-1/2} 	(X_{i+1} - X_i)  \overset{i.i.d}{\sim} \mathcal{N}\left( Z_i \theta, \gamma^2 I_2\right),$$`
+leads to a simple linear model published in &lt;a name=cite-michelot2019langevin&gt;&lt;/a&gt;[Michelot, Etienne, Blackwell, et al. (2019)](#bib-michelot2019langevin).
+    	
+--
 
 .pull-left[
 &lt;figure&gt;
@@ -466,7 +485,9 @@ leads to a simple linear model published in &lt;a name=cite-michelot2019langevin
 
 --
 
-.small[ On going work on Sea birds in the Mediteranean sea and Roe deer next to Toulouse]
+It is straightforward to consider multiple hidden states assuming that the state is constant over `\(\Delta_i\)`:
+
+The derived EM algorithm just requires to fit a weighted linear regression. .small[ On going work on Sea birds in the Mediteranean sea and Roe deer next to Toulouse]
 
 ---
 name: POD
@@ -602,56 +623,26 @@ A Predator - Prey Lokta Volterra model
 .question[Requires a nuclear Power plant to run!]
 
 ]
----
 
-# On going work
-
-### Some natural extension of the Langevin model useful in movement ecology
-
-* Coupling Hidden Markov model or change point detection model with a Langevin distribution:
-&lt;figure&gt;
-  &lt;img src="DAG4.png" alt="at the beginning is" style="width:60%" class = "centerimg" /&gt;
-&lt;/figure&gt;
-
-* Change the Langevin model for an hypoellitptic approach
-`$$d X_t = V_t dt; X_0 =x_0.$$`
-
-$$d V_t = - \nabla \log \pi{\left(X_t\right)} \, d t  -\frac{\nu^2}{2} V_t + \nu \,d W_t,\quad $$
 
 ---
 # Perspectives 
 
-### Some natural extension of the Langevin model useful in movement ecology
+## Combining multiple data sources: Popflow &lt;img src="bear.png"style="width:5%"&gt;
 
-* Introduction of an individual random effect,
+  * Capture Mark Recapture data for a large number of individuals (ADN sampling in feces)
+  * Few individuals equipped with GPS
+  
 
-###  Handling categorical covariates
-&lt;a name=cite-lejay2018maximum&gt;&lt;/a&gt;[Lejay and Pigato (2018)](#bib-lejay2018maximum) define a threshold diffusion and proposes an ML estimation method. Explore the generalisation to `\(\mathbb{R}^2\)`. 
+## Movement on Network  &lt;img src="bike.png"style="width:5%"&gt;
+  * Movement model on a network (typically roads)
+  * How to adapt segmentation methods to such data
+  * Citizen science project, massive data .... hum hum
 
-### Longer term perspective
-* Collective movement: Cheaper GPS imply  massive deployment. Invest the area of collective movement analysis.
-* Combined with sound monitoring
-
-### Going away from Markovian model ???
-
-
----
-# A few words to finish
-
-
-* Close interaction with biologist,
-  - it's helpful,
-  - provides exciting statistical problems,
-  - experiment a large diversity of approaches.
-* Hidden variables approach
-  - provide flexible models (spatial abundance, classification in time series, Partially observed SDE)
-  - popularized in Ecology in a Bayesian setting but frequentist approach is also possible
-* The Markovian property
-  - not so realistic,
-  - but a key component in both theoretical approach and computational aspects
-
-
-
+--
+.center[
+.care[Thank you for your attention]
+]
 
 ---
 class: biblio
@@ -669,12 +660,6 @@ pp. 333-382.
 Preisler, A. A. Ager, et al.](#cite-brillinger2002employing) (2002).
 "Employing stochastic differential equations to model wildlife motion".
 In: _Bulletin of the Brazilian Mathematical Society_ 33.3, pp. 385-408.
-
-&lt;a name=bib-dechaumaray2022estimation&gt;&lt;/a&gt;[Chaumaray, M. D. R. de, S.
-E. Kolei, and M. Marbac](#cite-dechaumaray2022estimation) (2022).
-_Estimation of the Order of Non-Parametric Hidden Markov Models using
-the Singular Values of an Integral Operator_. arXiv: 2210.03559
-[math.ST].
 
 &lt;a name=bib-fearnhead2008particle&gt;&lt;/a&gt;[Fearnhead, P., O.
 Papaspiliopoulos, and G. Roberts](#cite-fearnhead2008particle) (2008).
@@ -698,26 +683,27 @@ Laidre](#cite-gurarie2009novel) (2009). "A novel method for identifying
 behavioural changes in animal movement data". In: _Ecology Letters_
 12.5, pp. 395-408.
 
+&lt;a name=bib-kessler1997estimation&gt;&lt;/a&gt;[Kessler,
+M.](#cite-kessler1997estimation) (1997). "Estimation of an ergodic
+diffusion from discrete observations". In: _Scandinavian Journal of
+Statistics_ 24.2, pp. 211-229.
+
 ---
 class: biblio
 count: false
 # Bibliography
 &lt;img class="logopos_right" src="article.png" style="height:6%"&gt;
 
-&lt;a name=bib-kessler1997estimation&gt;&lt;/a&gt;[Kessler,
-M.](#cite-kessler1997estimation) (1997). "Estimation of an ergodic
-diffusion from discrete observations". In: _Scandinavian Journal of
-Statistics_ 24.2, pp. 211-229.
-
 &lt;a name=bib-lehericy2019consistent&gt;&lt;/a&gt;[Lehéricy,
 L.](#cite-lehericy2019consistent) (2019). "Consistent order estimation
 for nonparametric hidden Markov models". In: _Bernoulli_ 25, pp.
 464–-498.
 
-&lt;a name=bib-lejay2018maximum&gt;&lt;/a&gt;[Lejay, A. and P.
-Pigato](#cite-lejay2018maximum) (2018). "Maximum likelihood drift
-estimation for a threshold diffusion". In: _Scandinavian Journal of
-Statistics_.
+&lt;a name=bib-dechaumaray2022estimation&gt;&lt;/a&gt;[Marie, D. R. D. C., E. K.
+Salima, E. Marie-Pierre, et al.](#cite-dechaumaray2022estimation)
+(2023). _Estimation of the Order of Non-Parametric Hidden Markov Models
+using the Singular Values of an Integral Operator_. arXiv: 2210.03559
+[math.ST].
 
 &lt;a name=bib-martin2023backward&gt;&lt;/a&gt;[Martin, A., M. Étienne, P.
 Gloaguen, et al.](#cite-martin2023backward) (2023). "Backward
@@ -740,6 +726,12 @@ Blackwell, et al.](#cite-michelot2019langevin) (2019). "The Langevin
 diffusion as a continuous-time model of animal movement and habitat
 selection". In: _Methods in Ecology and Evolution_.
 
+&lt;a name=bib-michelot2016movehmm&gt;&lt;/a&gt;[Michelot, T., R. Langrock, and T.
+A. Patterson](#cite-michelot2016movehmm) (2016). "moveHMM: an R package
+for the statistical modelling of animal movement data using hidden
+Markov models". In: _Methods in Ecology and Evolution_ 7.11, pp.
+1308-1315.
+
 
 ---
 class: biblio
@@ -747,16 +739,15 @@ count: false
 # Bibliography
 &lt;img class="logopos_right" src="article.png" style="height:6%"&gt;
 
-&lt;a name=bib-michelot2016movehmm&gt;&lt;/a&gt;[Michelot, T., R. Langrock, and T.
-A. Patterson](#cite-michelot2016movehmm) (2016). "moveHMM: an R package
-for the statistical modelling of animal movement data using hidden
-Markov models". In: _Methods in Ecology and Evolution_ 7.11, pp.
-1308-1315.
-
 &lt;a name=bib-morales2004extracting&gt;&lt;/a&gt;[Morales, J. M., D. T. Haydon, J.
 Frair, et al.](#cite-morales2004extracting) (2004). "Extracting more
 out of relocation data: building movement models as mixtures of random
 walks". In: _Ecology_ 85.9, pp. 2436-2445.
+
+&lt;a name=bib-nathan2008movement&gt;&lt;/a&gt;[Nathan, R., W. M. Getz, E. Revilla,
+et al.](#cite-nathan2008movement) (2008). "A movement ecology paradigm
+for unifying organismal movement research". In: _Proceedings of the
+National Academy of Sciences_ 105.49, pp. 19052-19059.
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
