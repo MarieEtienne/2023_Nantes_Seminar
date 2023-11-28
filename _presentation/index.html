@@ -21,38 +21,6 @@ class: center, middle, inverse, title-slide
 
 ---
 
-
-
-
-# Join work with
-
-.pull-left[
-
-## Methods 
-
-* M. Du Roy De Chaumaray,
-* S. El Koleil,
-* P. Gloaguen,  
-* S. Le Corff, 
-* M. Marbac-Lourdelle
-* A. Martin,
-* T. Michelot, 
-* J. Olsson,
-
-]
-
-.pull-right[
-
-## Applications
-
-* M. Authier,
-* T. Hoch,
-* N. Morellet,
-* S. Mahévas,
-* R. Patin,
-* E. Rivot.
-]
----
 name: intro
 
 &lt;!-- F1D763 --&gt;
@@ -95,14 +63,14 @@ name: intro
 
 ##  &lt;a name=cite-nathan2008movement&gt;&lt;/a&gt;([Nathan, Getz, Revilla, et al., 2008](#bib-nathan2008movement)) presents individual movement as the results of
 
-.pull-left[
+.left-column[
 &lt;figure&gt;
   &lt;img src="nathan_fig.png" alt="at the beginning is" style="width:100%" class = "centerimg" /&gt;
 &lt;/figure&gt;
 .legend[  Movement drivers by [Nathan, Getz, Revilla, et al. (2008)](#bib-nathan2008movement) ]
 ]
 
-.pull-right[
+.right-column[
 
 * Motion capacities
 * Internal state
@@ -192,7 +160,7 @@ Rarely in a supervised context
 
 &lt;figure&gt;
   &lt;img src="Fishing_Mada.png" alt="Fishing points in Mada" style="width:90%" class = "centerimg" /&gt;
-.legend[Peruvian booby  data courtesy of Sophie Bertrand]
+.legend[Artisanal fishing trips in Toliara, Madagascar]
 &lt;/figure&gt;
 ]
 
@@ -218,8 +186,8 @@ Mostly unsupervised
 
 
 &lt;figure&gt;
-  &lt;img src="Dives_furseals.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
-.legend[Spatial dives repartition, from @johnson2011bayesian ]
+  &lt;img src="Dives_furseals.png" alt="at the beginning is" style="width:100%" class = "centerimg" /&gt;
+.legend[Spatial dives repartition, from &lt;a name=cite-johnson2011bayesian&gt;&lt;/a&gt;([Johnson, London, and Kuhn, 2011](#bib-johnson2011bayesian)) ]
 &lt;/figure&gt;
 ]
 
@@ -277,12 +245,12 @@ name:signal
 
 &lt;figure&gt;
   &lt;img src="segmentation.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
-.legend[Segmentation illustration @patin2019identifying]
+.legend[Segmentation illustration ([Patin, Etienne, Lebarbier, et al., 2019](#bib-patin2019identifying))]
 &lt;/figure&gt;
 
 &lt;figure&gt;
   &lt;img src="seg_classification.png" alt="at the beginning is" style="width:90%" class = "centerimg" /&gt;
-.legend[Segmentation illustration @patin2019identifying]
+.legend[Segmentation - classification illustration([Patin, Etienne, Lebarbier, et al., 2019](#bib-patin2019identifying))]
 &lt;/figure&gt;
 ]
 
@@ -332,7 +300,7 @@ The main suspect : the strong parametric form of the emission model in classical
 
 --
 
-A new hope: new non parametric approaches have been proposed &lt;a name=cite-lehericy2019consistent&gt;&lt;/a&gt;&lt;a name=cite-dechaumaray2022estimation&gt;&lt;/a&gt;([Lehéricy, 2019](#bib-lehericy2019consistent); [Marie, Salima, Marie-Pierre, et al., 2023](#bib-dechaumaray2022estimation))
+A new hope: new non parametric approaches have been proposed &lt;a name=cite-lehericy2019consistent&gt;&lt;/a&gt;&lt;a name=cite-dechaumaray2022estimation&gt;&lt;/a&gt;([Lehéricy, 2019](#bib-lehericy2019consistent); [ Du Roy De Chaumaray, El Kolei, Etienne, et al., 2023](#bib-dechaumaray2022estimation))
 
 
 --
@@ -582,8 +550,7 @@ template: POD3
 
 ### Main problem
 Backward smoothing requires to sample an ancestor (value of `\(j\)`) with weights:
-`$${\Lambda_{k-1}^{j,i}}= \frac{{\hat{\omega}_{k-1}^j}q^\theta(\xi_{k-1}^j,\xi_k^i, \Delta_{k-1})}
-{\sum_{\ell=1}^N {\hat{\omega}_{k-1}^\ell} q^\theta(\xi_{k-1}^\ell,\xi_k^i, \Delta_{k-1})}.$$`
+`$${\Lambda_{k-1}^{j,i}}\varpropto {\hat{\omega}_{k-1}^j}q^\theta(\xi_{k-1}^j,\xi_k^i, \Delta_{k-1}).$$`
 
 The probability of `\(\xi_{k-1}^j\)` being the ancestor of `\(\xi_{k}^i\)` under the true dynamics
 
@@ -594,20 +561,45 @@ Use the unbiased estimator `\(\class{orange}{\hat{q}^\theta(\xi_{k-1}^{j},\xi_k^
 `$${\hat{\Lambda}_{k-1}^{j,i}}= \frac{\hat{\omega}_{k-1}^j\class{orange}{\hat{q}^\theta(\xi_{k-1}^{j},\xi_k^i, \Delta_{k-1}, \zeta_i)}}{\sum_{\ell=1}^N \hat{\omega}_{k-1}^\ell \class{orange}{\hat{q}^\theta(\xi_{k-1}^{j},\xi_k^i, \Delta_{k-1}, \zeta_i)}}$$`
 
 But  `\(\mathbb{E}({\hat{\Lambda}_{k-1}^{j,i}}) \ne {\Lambda}_{k-1}^{j,i},\)` because of the ratio.
+---
+
+template: POD3
+
+The Acceptance Rejection tricks used in standard SSM &lt;a name=cite-douc2011sequential&gt;&lt;/a&gt;([Douc, Garivier, Moulines, et al., 2011](#bib-douc2011sequential))
+
+### First ingredient 
+
+.care[Assumption:] `\(\exists \class{orange}{\hat{\sigma}_{k,+}}\)` such that `\(\forall x,y,~0&lt; \class{orange}{\hat{q}^\theta(x,y,\Delta_k,\zeta_k)}&lt; \class{orange}{\hat{\sigma}_{k,+}}\)`  a.s.
+
+Consider the random variable `\(\class{bleu}{\widehat{J}}\)` defined as follow:
+
+* Sample `\(J_{cand}\in 1,\dots, N\)` with probabilities  `\(\propto {\{\hat{\omega}_{k-1}^i\}_{i=1,\dots,N}}\)`;
+* Sample `\(\class{orange}{\zeta_{k-1}}\)` using the GPE of ([Fearnhead, Papaspiliopoulos, and Roberts, 2008](#bib-fearnhead2008particle));
+* Sample `\(U\sim \mathcal{U}[0,1]\)`; 
+* IF `\(U \leq \frac{\class{orange}{\hat{q}^\theta(\xi_{k-1}^{J_{cand}},\xi_{k}^i,\Delta_{k-1},\zeta_{k-1})}}{\class{orange}{\hat{\sigma}_{k-1,+}}}\)`
+  + Set `\(\class{bleu}{\widehat{J}}=J_{cand}\)` 
+  + ELSE Try Again;
+
+--
+
+### Second ingredient 
+from &lt;a name=cite-olsson2017efficient&gt;&lt;/a&gt;([Olsson and Westerborn, 2017](#bib-olsson2017efficient))
+
+* PaRIS algorithm : an Online procedure without a backward pass for additive functional 
+`$$\sum_{k=0}^{n-1}\mathbb{E}( h(X_k, X_{k+1}) \vert Y_{0:n})$$`
+
+
 
 ---
 template: POD3
 
 ## The final strategy 
 
-* The particle-based, rapid incremental smoother (PaRIS)  algorithm &lt;a name=cite-olsson2017efficient&gt;&lt;/a&gt;([Olsson and Westerborn, 2017](#bib-olsson2017efficient)) provides  an online smoother using a rewriting of the Backward weight and an acceptation/rejection mechanism but depends on `\(q(\xi_{k-1}, \xi_{k})\)`
-
 * The generalized random PaRIS algorithm, in  &lt;a name=cite-gloaguen2018online&gt;&lt;/a&gt;([Gloaguen, Etienne, and Le Corff, 2018b](#bib-gloaguen2018online)), samples using an AR algorithm to avoid the normalisation step  and  an importance sampling approach in &lt;a name=cite-martin2023backward&gt;&lt;/a&gt;([Martin, Étienne, Gloaguen, et al., 2023](#bib-martin2023backward))
 
----
-template: POD3
+-- 
 
-A Predator - Prey Lokta Volterra model
+Example from a Predator - Prey Lokta Volterra model
 
 .pull-left[
 
@@ -645,9 +637,45 @@ A Predator - Prey Lokta Volterra model
 ]
 
 ---
+# Join work with
+
+.pull-left[
+
+## Methods 
+
+* M. Du Roy De Chaumaray,
+* S. El Koleil,
+* P. Gloaguen,  
+* S. Le Corff, 
+* M. Marbac-Lourdelle
+* A. Martin,
+* T. Michelot, 
+* J. Olsson,
+
+]
+
+.pull-right[
+
+## Applications
+
+* M. Authier,
+* T. Hoch,
+* N. Morellet,
+* S. Mahévas,
+* R. Patin,
+* E. Rivot.
+]
+
+---
 class: biblio
 # Bibliography
 &lt;img class="logopos_right" src="article.png" style="height:6%"&gt;
+
+&lt;a name=bib-dechaumaray2022estimation&gt;&lt;/a&gt;[ Du Roy De Chaumaray, M., S.
+El Kolei, M. Etienne, et al.](#cite-dechaumaray2022estimation) (2023).
+_Estimation of the Order of Non-Parametric Hidden Markov Models using
+the Singular Values of an Integral Operator_. arXiv: 2210.03559
+[math.ST].
 
 &lt;a name=bib-beskos2006exact&gt;&lt;/a&gt;[Beskos, A., O. Papaspiliopoulos, G. O.
 Roberts, et al.](#cite-beskos2006exact) (2006). "Exact and
@@ -660,6 +688,10 @@ pp. 333-382.
 Preisler, A. A. Ager, et al.](#cite-brillinger2002employing) (2002).
 "Employing stochastic differential equations to model wildlife motion".
 In: _Bulletin of the Brazilian Mathematical Society_ 33.3, pp. 385-408.
+
+&lt;a name=bib-douc2011sequential&gt;&lt;/a&gt;[Douc, R., A. Garivier, E. Moulines,
+et al.](#cite-douc2011sequential) (2011). "Sequential Monte Carlo
+smoothing for general state space hidden Markov models".
 
 &lt;a name=bib-fearnhead2008particle&gt;&lt;/a&gt;[Fearnhead, P., O.
 Papaspiliopoulos, and G. Roberts](#cite-fearnhead2008particle) (2008).
@@ -678,32 +710,32 @@ data in ecology". In: _Journal of the Royal Statistical Society: Series
 C (Applied Statistics)_ 67.3, pp. 599-619. DOI:
 [10.1111/rssc.12251](https://doi.org/10.1111%2Frssc.12251).
 
-&lt;a name=bib-gurarie2009novel&gt;&lt;/a&gt;[Gurarie, E., R. D. Andrews, and K. L.
-Laidre](#cite-gurarie2009novel) (2009). "A novel method for identifying
-behavioural changes in animal movement data". In: _Ecology Letters_
-12.5, pp. 395-408.
-
-&lt;a name=bib-kessler1997estimation&gt;&lt;/a&gt;[Kessler,
-M.](#cite-kessler1997estimation) (1997). "Estimation of an ergodic
-diffusion from discrete observations". In: _Scandinavian Journal of
-Statistics_ 24.2, pp. 211-229.
-
 ---
 class: biblio
 count: false
 # Bibliography
 &lt;img class="logopos_right" src="article.png" style="height:6%"&gt;
 
+&lt;a name=bib-gurarie2009novel&gt;&lt;/a&gt;[Gurarie, E., R. D. Andrews, and K. L.
+Laidre](#cite-gurarie2009novel) (2009). "A novel method for identifying
+behavioural changes in animal movement data". In: _Ecology Letters_
+12.5, pp. 395-408.
+
+&lt;a name=bib-johnson2011bayesian&gt;&lt;/a&gt;[Johnson, D. S., J. M. London, and
+C. E. Kuhn](#cite-johnson2011bayesian) (2011). "Bayesian inference for
+animal space use and other movement metrics". In: _Journal of
+agricultural, biological, and environmental statistics_ 16, pp.
+357-370.
+
+&lt;a name=bib-kessler1997estimation&gt;&lt;/a&gt;[Kessler,
+M.](#cite-kessler1997estimation) (1997). "Estimation of an ergodic
+diffusion from discrete observations". In: _Scandinavian Journal of
+Statistics_ 24.2, pp. 211-229.
+
 &lt;a name=bib-lehericy2019consistent&gt;&lt;/a&gt;[Lehéricy,
 L.](#cite-lehericy2019consistent) (2019). "Consistent order estimation
 for nonparametric hidden Markov models". In: _Bernoulli_ 25, pp.
 464–-498.
-
-&lt;a name=bib-dechaumaray2022estimation&gt;&lt;/a&gt;[Marie, D. R. D. C., E. K.
-Salima, E. Marie-Pierre, et al.](#cite-dechaumaray2022estimation)
-(2023). _Estimation of the Order of Non-Parametric Hidden Markov Models
-using the Singular Values of an Integral Operator_. arXiv: 2210.03559
-[math.ST].
 
 &lt;a name=bib-martin2023backward&gt;&lt;/a&gt;[Martin, A., M. Étienne, P.
 Gloaguen, et al.](#cite-martin2023backward) (2023). "Backward
@@ -721,6 +753,13 @@ J. Matthiopoulos](#cite-michelot2019linking) (2019). "Linking resource
 selection and step selection models for habitat preferences in
 animals". In: _Ecology_ 100.1.
 
+
+---
+class: biblio
+count: false
+# Bibliography
+&lt;img class="logopos_right" src="article.png" style="height:6%"&gt;
+
 &lt;a name=bib-michelot2019langevin&gt;&lt;/a&gt;[Michelot, T., M. Etienne, P.
 Blackwell, et al.](#cite-michelot2019langevin) (2019). "The Langevin
 diffusion as a continuous-time model of animal movement and habitat
@@ -731,23 +770,6 @@ A. Patterson](#cite-michelot2016movehmm) (2016). "moveHMM: an R package
 for the statistical modelling of animal movement data using hidden
 Markov models". In: _Methods in Ecology and Evolution_ 7.11, pp.
 1308-1315.
-
-
----
-class: biblio
-count: false
-# Bibliography
-&lt;img class="logopos_right" src="article.png" style="height:6%"&gt;
-
-&lt;a name=bib-morales2004extracting&gt;&lt;/a&gt;[Morales, J. M., D. T. Haydon, J.
-Frair, et al.](#cite-morales2004extracting) (2004). "Extracting more
-out of relocation data: building movement models as mixtures of random
-walks". In: _Ecology_ 85.9, pp. 2436-2445.
-
-&lt;a name=bib-nathan2008movement&gt;&lt;/a&gt;[Nathan, R., W. M. Getz, E. Revilla,
-et al.](#cite-nathan2008movement) (2008). "A movement ecology paradigm
-for unifying organismal movement research". In: _Proceedings of the
-National Academy of Sciences_ 105.49, pp. 19052-19059.
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
